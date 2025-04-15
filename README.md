@@ -14,11 +14,11 @@ To run the standard simulator node you have to include the 'stonefish_simulator.
 Please refer to the documentation for details.
 
 ### Credits
-This software was written and is continuously developed by Patryk Cieślak.
-
 If you find this software useful in your research, please cite:
 
-*Patryk Cieślak, "Stonefish: An Advanced Open-Source Simulation Tool Designed for Marine Robotics, With a ROS Interface", In Proceedings of MTS/IEEE OCEANS 2019, June 2019, Marseille, France*
+*Patryk Cieślak, "Stonefish: An Advanced Open-Source Simulation Tool Designed for Marine Robotics, With a ROS Interface", In Proceedings of MTS/IEEE OCEANS 2019, June 2019, Marseille, France* 
+
+*Michele Grimaldi, "Stonefish: Supporting Machine Learning Research in Marine Robotics", In Proceedings of ICRA 2025, May 2025, USA*
 ```
 @inproceedings{stonefish,
    author = {Cie{\'s}lak, Patryk},
@@ -27,13 +27,18 @@ If you find this software useful in your research, please cite:
    month = jun,
    year = {2019},
    doi={10.1109/OCEANSE.2019.8867434}}
+
+@misc{grimaldi2025stonefishsupportingmachinelearning,
+      title={Stonefish: Supporting Machine Learning Research in Marine Robotics}, 
+      author={Michele Grimaldi and Patryk Cieslak and Eduardo Ochoa and Vibhav Bharti and Hayat Rajani and Ignacio Carlucho and Maria Koskinopoulou and Yvan R. Petillot and Nuno Gracias},
+      year={2025},
+      eprint={2502.11887},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2502.11887}, 
+}
 ```
 
-### Support
-I offer paid support on setting up the simulation of your own systems, including necessary 3D modelling (simplification of CAD models for physics, preparation of accurate visualisations, etc.), setup of simulation scenarios, development of new sensors, actuators, and custom features that do not require significant changes to the code base. Please contact me at [patryk.cieslak@udg.edu](mailto:patryk.cieslak@udg.edu).
-
-### Funding
-Currently there is no funding of this work. It is developed by the author following his needs and requests from other users.
 
 ### License
 This is free software, published under the General Public License v3.0.
