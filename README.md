@@ -5,8 +5,12 @@ This package delivers a ROS2 interface for the _Stonefish_ library. It also incl
 ### Installation
 
 1. Install the open-source [Stonefish](https://github.com/patrykcieslak/stonefish) library (*the same version as the ROS2 package!*).
-2. Clone the *stonefish_ros2* package to your workspace.
-3. Compile the workspace.
+2. Install pybind11 via: 
+```bash
+apt install python3-pybind11
+```
+3. Clone the *stonefish_ros2* package to your workspace.
+4. Compile the workspace.
 
 ### Launching
 
