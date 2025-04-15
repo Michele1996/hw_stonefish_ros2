@@ -1,4 +1,4 @@
-### stonefish_ros2 package for ROS2
+### stonefish_ros package for ROS2
 
 This package delivers a ROS2 interface for the _Stonefish_ library. It also includes a standard simulator node, which loads the simulation scenario from a scenario description file (XML). The included parser extends the standard functionality of the _Stonefish_ library to enable search for files, resolution of parameters as well as a complete message interface. 
 
