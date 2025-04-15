@@ -13,6 +13,9 @@ This package delivers a ROS2 interface for the _Stonefish_ library. It also incl
 To run the standard simulator node you have to include the 'stonefish_simulator.launch.py' file in your own launch file, overriding the default arguments.
 Please refer to the documentation for details.
 
+## ArduPilot-Stonefish-Ros2
+Please refer to https://github.com/bvibhav/stonefish_bluerov2
+
 ### Credits
 If you find this software useful in your research, please cite:
 
