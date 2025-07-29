@@ -68,6 +68,7 @@
 #include <Stonefish/actuators/Servo.h>
 #include <Stonefish/actuators/VariableBuoyancy.h>
 #include <Stonefish/core/Robot.h>
+#include <Stonefish/comms/AcousticModem.h>
 
 using namespace std::placeholders;
 
@@ -313,6 +314,11 @@ void ROS2SimulationManager::SimulationStepCompleted(Scalar timeStep)
             case CommType::VLC:
                 interface_->PublishVLC(pubs_.at(comm->getName()), pubs_.at(comm->getName() + "/data"), (VLC*)comm);
                 comm->MarkDataOld();
+                break;
+            case CommType::ACOUSTIC:
+                interface_->PublishAcousticModem(pubs_.at(comm->getName()), pubs_.at(comm->getName() + "/rx_buffer"), (AcousticModem*)comm);
+                comm->MarkDataOld();
+                break;
             default:
                 break;
         }
@@ -995,6 +1001,13 @@ void ROS2SimulationManager::ActuatorOriginCallback(const geometry_msgs::msg::Tra
             RCLCPP_WARN_STREAM(nh_->get_logger(), "Live update of origin frame of actuator '" << act->getName() << "' not supported!");
             break;
     }
+}
+
+
+void ROS2SimulationManager::AcousticModemCallback(const stonefish_ros2::msg::AcousticModemData::SharedPtr msg, AcousticModem* act_modem)
+{
+    
+    act_modem->setDataBinary(msg->data_binary);
 }
 
 void ROS2SimulationManager::TrajectoryCallback(const nav_msgs::msg::Odometry::SharedPtr msg, ManualTrajectory* tr)

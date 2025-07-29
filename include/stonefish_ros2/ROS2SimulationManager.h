@@ -45,6 +45,7 @@
 #include "stonefish_ros2/msg/simulation_info.hpp"
 #include <Stonefish/core/SimulationManager.h>
 #include <Stonefish/actuators/Servo.h>
+#include "stonefish_ros2/msg/acoustic_modem_data.hpp"
 
 namespace sf
 {
@@ -66,6 +67,7 @@ namespace sf
     class Multibeam2;
     class FLS;
     class VLC;
+    class AcousticModem;
     class SSS;
     class MSIS;
     class Joint;
@@ -150,6 +152,7 @@ namespace sf
         void ThrusterCallback(const std_msgs::msg::Float64::SharedPtr msg, Thruster* th);
         void PropellerCallback(const std_msgs::msg::Float64::SharedPtr msg, Propeller* prop);
         void VBSCallback(const std_msgs::msg::Float64::SharedPtr msg, VariableBuoyancy* act);
+        void AcousticModemCallback(const stonefish_ros2::msg::AcousticModemData::SharedPtr msg, AcousticModem* act_modem);
         void SuctionCupService(const std_srvs::srv::SetBool::Request::SharedPtr req,
                             std_srvs::srv::SetBool::Response::SharedPtr res, SuctionCup* suction);
         void SensorService(const std_srvs::srv::SetBool::Request::SharedPtr req,

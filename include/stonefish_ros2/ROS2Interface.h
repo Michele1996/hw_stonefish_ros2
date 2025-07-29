@@ -57,6 +57,7 @@ namespace sf
     class MSIS;
     class Contact;
     class USBL;
+    class AcousticModem;
     class VLC;
     class AnimatedEntity;
 
@@ -83,6 +84,7 @@ namespace sf
         void PublishMultibeam2(rclcpp::PublisherBase::SharedPtr pub, Multibeam2* mb) const;
         void PublishContact(rclcpp::PublisherBase::SharedPtr pub, Contact* cnt) const;
         void PublishUSBL(rclcpp::PublisherBase::SharedPtr pub, rclcpp::PublisherBase::SharedPtr pubInfo, USBL* usbl) const;
+        void PublishAcousticModem(rclcpp::PublisherBase::SharedPtr pub, rclcpp::PublisherBase::SharedPtr pubInfo, AcousticModem* acoustic) const;
 	void PublishVLC(rclcpp::PublisherBase::SharedPtr pub, rclcpp::PublisherBase::SharedPtr pubInfo, VLC* VLC) const;
         void PublishTrajectoryState(rclcpp::PublisherBase::SharedPtr pubOdom, rclcpp::PublisherBase::SharedPtr pubIter, AnimatedEntity* anim) const;
 

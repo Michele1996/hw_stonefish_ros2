@@ -49,6 +49,7 @@
 #include "stonefish_ros2/msg/int32_stamped.hpp"
 #include <stonefish_ros2/msg/event.hpp>
 #include <stonefish_ros2/msg/event_array.hpp>
+#include <stonefish_ros2/msg/acoustic_modem_data.hpp>
 
 #include <Stonefish/sensors/Sample.h>
 #include <Stonefish/sensors/scalar/Accelerometer.h>
@@ -259,6 +260,20 @@ void ROS2Interface::PublishDVL(rclcpp::PublisherBase::SharedPtr pub, DVL* dvl) c
     msg.velocity_covariance[8] = vVariance;
     msg.altitude = (status == 0 || status == 2) ? s.getValue(3) : -1.0;
     std::static_pointer_cast<rclcpp::Publisher<stonefish_ros2::msg::DVL>>(pub)->publish(msg);
+}
+
+
+void ROS2Interface::PublishAcousticModem(rclcpp::PublisherBase::SharedPtr pub, rclcpp::PublisherBase::SharedPtr pubInfo, AcousticModem* acoustic) const
+{
+
+    std::vector<uint8_t> data_binary=acoustic->getDataBinary();
+    stonefish_ros2::msg::AcousticModemData msg;
+    msg.header.stamp = nh_->get_clock()->now();
+    msg.header.frame_id = acoustic->getName();
+    msg.modem_id = acoustic->getDeviceId();
+    msg.data_binary = data_binary;
+    std::static_pointer_cast<rclcpp::Publisher<stonefish_ros2::msg::AcousticModemData>>(pub)->publish(msg);
+    
 }
 
 void ROS2Interface::PublishDVLAltitude(rclcpp::PublisherBase::SharedPtr pub, DVL* dvl) const

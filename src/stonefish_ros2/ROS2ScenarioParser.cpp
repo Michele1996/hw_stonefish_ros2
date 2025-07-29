@@ -971,7 +971,18 @@ Comm* ROS2ScenarioParser::ParseComm(XMLElement* element, const std::string& name
                 pubs[commName] = nh_->create_publisher<visualization_msgs::msg::MarkerArray>(topicStr, 10);
                 pubs[commName + "/beacon_info"] = nh_->create_publisher<stonefish_ros2::msg::BeaconInfo>(topicStr + "/beacon_info", 10);
             }
+            
                 break;
+                
+           case CommType::ACOUSTIC:
+           {
+                
+                pubs[commName + "/rx_buffer"] = nh_->create_publisher<stonefish_ros2::msg::AcousticModemData>(commName + "/rx_buffer", 10);
+                std::map<std::string, rclcpp::SubscriptionBase::SharedPtr>& subs = sim->getSubscribers();
+                 std::function<void(const stonefish_ros2::msg::AcousticModemData::SharedPtr msg)> callbackFunc =
+                std::bind(&ROS2SimulationManager::AcousticModemCallback, sim, _1, (AcousticModem*)comm);
+                subs[commName] = nh_->create_subscription<stonefish_ros2::msg::AcousticModemData>(std::string(commName+"/tx_buffer"), 10, callbackFunc);
+           }
 
             default:
                 break;
